@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FileBooster
@@ -16,7 +13,17 @@ namespace FileBooster
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            OpenFileDialog fileDialog = new OpenFileDialog();
+            fileDialog.Filter = "All Files(*.*)|*.*";
+            fileDialog.Title = "파일을 선택하세요";
+
+            if (fileDialog.ShowDialog() == DialogResult.OK)
+            {
+                Application.Run(new Form1(fileDialog.FileName));
+            }
+
+            
         }
     }
 }
